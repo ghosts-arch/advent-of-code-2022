@@ -46,9 +46,12 @@ with open("input.txt", "r") as turns:
         match player_choice:
             case "X":
                 player_score += 1
+                break
             case "Y":
                 player_score += 2
+                break
             case "Z":
                 player_score += 3
+                break
 
 print(player_score)
