@@ -5,28 +5,28 @@ with open("input.txt", "r") as turns:
     for turn in turns:
         opponent_choice = turn[0]
         end = turn[2]
-        player_choice
+        player_choice = ""
         if end == "Y":
             if opponent_choice == "A":
                 player_choice = "X"
             elif opponent_choice == "B":
                 player_choice = "Y"
-            else:
+            elif opponent_choice == "C":
                 player_choice = "Z"
         elif end == "X":
             if opponent_choice == "A":
                 player_choice = "Z"
+            elif opponent_choice == "C":
+                player_choice = "Y"
             elif opponent_choice == "B":
                 player_choice = "X"
-            else:
-                player_choice = "Y"
         else:
             if opponent_choice == "A":
                 player_choice = "Y"
+            elif opponent_choice == "C":
+                player_choice = "X"
             elif opponent_choice == "B":
                 player_choice = "Z"
-            else:
-                player_choice = "X"
 
         print(player_choice)
         if player_choice == "X" and opponent_choice == "A":
