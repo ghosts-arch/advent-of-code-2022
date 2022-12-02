@@ -42,16 +42,11 @@ with open("input.txt", "r") as turns:
                 player_score += 6
             if player_choice == "Y" and opponent_choice == "A":
                 player_score += 6
-
-        match player_choice:
-            case "X":
-                player_score += 1
-                break
-            case "Y":
-                player_score += 2
-                break
-            case "Z":
-                player_score += 3
-                break
+        if player_choice == "X":
+            player_score += 1
+        if player_choice == "Y":
+            player_score += 2
+        if player_choice == "Z":
+            player_score += 3
 
 print(player_score)
