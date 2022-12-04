@@ -1,16 +1,20 @@
-def get_compartiments(backpack):
-    middle = int(len(backpack)/2)
-    return [backpack[:middle], backpack[middle:-1]]
+import numpy as np
 
 
-def find_item(compartiments):
-    for item in compartiments[0]:
-        if compartiments[1].find(item) != -1:
+def create_backpacks_groups():
+    with open("input.txt", "r") as backpacks_list:
+        backpacks = backpacks_list.read().splitlines()
+        return np.array_split(backpacks, len(backpacks) // 3)
+
+
+def find_item(group):
+    print(group)
+    for item in group[0]:
+        if group[1].find(item) != -1 and group[2].find(item) != -1:
             return item
 
 
 def get_priority(item):
-    print(item)
     if 65 <= ord(item) <= 90:
         return ord(item) - 38
     else:
@@ -19,11 +23,10 @@ def get_priority(item):
 
 total_priority = 0
 
-with open("input.txt", "r") as data:
-    for backpack in data:
-        compartiments = get_compartiments(backpack)
-        item = find_item(compartiments)
-        print(get_priority(item))
-        total_priority += get_priority(item)
+
+groups = create_backpacks_groups()
+for group in groups:
+    item = find_item(group)
+    total_priority += get_priority(item)
 
 print(total_priority)
